@@ -1,0 +1,65 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Дополнительные глобальные стили */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+@layer components {
+  /* Класс для анимированной градиентной обводки */
+  .animated-border {
+    border: 2px solid transparent;
+    border-radius: 0.5rem; /* Соответствует rounded-lg */
+    position: relative;
+    animation: gradient-border 3s ease infinite;
+  }
+
+  /* Псевдоэлемент для создания эффекта градиента */
+  .animated-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    z-index: -1;
+    animation: gradient-spin 10s linear infinite;
+    background-size: 400% 400%;
+  }
+
+  /* Класс для кнопок с анимированной обводкой */
+  .animated-button {
+    @apply border-2 border-transparent text-black bg-white hover:bg-yellow-50 p-3 rounded-lg transition-all duration-200 ease-in-out transform hover:-translate-y-1 hover:shadow-lg;
+    animation: gradient-border 3s ease infinite;
+    position: relative;
+  }
+
+  .animated-button::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    z-index: -1;
+    animation: gradient-spin 10s linear infinite;
+    background-size: 400% 400%;
+  }
+
+  /* Ключевые кадры для вращения градиента */
+  @keyframes gradient-spin {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
