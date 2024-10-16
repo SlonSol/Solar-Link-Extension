@@ -24,14 +24,9 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="relative min-h-screen">
-        {/* Фоновый слой */}
-        <div className="absolute inset-0 -z-10 h-full w-full bg-yellow-100 bg-[linear-gradient(to_right,#FFD700_1px,transparent_1px),linear-gradient(to_bottom,#FFD700_1px,transparent_1px)] bg-[size:6rem_4rem]">
-          <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#FFC700,transparent)]"></div>
-        </div>
-
         {/* Основной контент */}
         <div className="flex items-center justify-center min-h-screen">
-          <div className="w-[364px] h-[600px] px-[20px] py-[16px] bg-white rounded-lg shadow-lg overflow-y-auto">
+          <div className="w-[364px] h-[600px] px-[20px] py-[16px] bg-white rounded-lg shadow-lg overflow-y-auto ransform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,245,208,.5)_100%)]">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route
