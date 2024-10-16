@@ -20,12 +20,10 @@ const App: React.FC = () => {
     setToken(null)
     localStorage.removeItem('token')
   }
-
   return (
     <Router>
-      <div className="relative min-h-screen">
-        {/* Основной контент */}
-        <div className="flex items-center justify-center min-h-screen">
+      <div className="relative min-h-screen bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+        <div className="flex items-center justify-center min-h-screen ">
           <div className="w-[364px] h-[600px] px-[20px] py-[16px] bg-white rounded-lg shadow-lg overflow-y-auto ransform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,245,208,.5)_100%)]">
             <Routes>
               <Route path="/" element={<Home />} />
