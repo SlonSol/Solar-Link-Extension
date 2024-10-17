@@ -11,7 +11,7 @@ interface IntroLogoProps {
 const IntroLogo: React.FC<IntroLogoProps> = ({ onComplete }) => {
   useEffect(() => {
     // Таймер завершения анимации
-    const totalDuration = 4000; // Убедитесь, что это совпадает с длительностью вашей анимации
+    const totalDuration = 7000; // Убедитесь, что это совпадает с длительностью вашей анимации
     const timer = setTimeout(() => {
       onComplete();
     }, totalDuration);

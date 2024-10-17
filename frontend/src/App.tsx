@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Register from './components/Register';
 import Login from './components/Login';
 import Profile from './components/Profile';
-import Home from './components/Home';
+import HomePage from './components/Home';
 import IntroLogo from './components/IntroLogo'; // Импортируем новый компонент
 
 const App: React.FC = () => {
@@ -38,12 +38,12 @@ const App: React.FC = () => {
     <Router>
       <div className="relative min-h-screen bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
         <div className="flex items-center justify-center min-h-screen">
-          <div className="w-[364px] h-[600px] px-[20px] py-[16px] bg-white rounded-lg shadow-lg overflow-y-auto transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,245,208,.5)_100%)]">
+          <div className="w-[364px] h-[600px] px-[20px] py-[16px] bg-white rounded-lg shadow-lg overflow-y-auto transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,245,238,.5)_100%)]">
             {showIntro ? (
               <IntroLogo onComplete={handleIntroComplete} /> // Показать анимацию
             ) : (
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<HomePage />} />
                 <Route
                   path="/login"
                   element={!token ? <Login setToken={setToken} /> : <Navigate to="/profile" />}

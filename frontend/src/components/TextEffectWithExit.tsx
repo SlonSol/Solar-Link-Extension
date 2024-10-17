@@ -11,7 +11,7 @@ export function TextEffectWithExit() {
     // Логика срабатывания анимации один раз
     const timer = setTimeout(() => {
       setTrigger(false);
-    }, 2000); // Длительность анимации
+    }, 5000); // Длительность анимации
 
     return () => clearTimeout(timer);
   }, []);
@@ -46,7 +46,7 @@ export function TextEffectWithExit() {
         y: -30,
         filter: 'blur(10px) brightness(0%)',
         transition: {
-          duration: 0.4,
+          duration: 3,
         },
       },
     },
