@@ -33,7 +33,7 @@ const Register: React.FC = () => {
 
       {/* Main Content */}
       <div className="w-full flex flex-col items-center mt-8">
-        <h2 className="text-2xl font-semibold text-center mb-4">Register an Account</h2>
+        <h2 className="text-2xl font-semibold text-center mb-4">Register</h2>
         {message && <p className="mb-4 text-center text-green-500">{message}</p>}
         <form onSubmit={handleSubmit} className="flex flex-col w-full space-y-4">
           <input

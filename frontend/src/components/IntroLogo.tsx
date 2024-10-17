@@ -1,53 +1,39 @@
 // src/components/IntroLogo.tsx
 
 import React, { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { TextEffectWithExit } from './TextEffectWithExit'; // Подключаем анимацию текста
 
 interface IntroLogoProps {
   onComplete: () => void;
 }
 
 const IntroLogo: React.FC<IntroLogoProps> = ({ onComplete }) => {
-  const controls = useAnimation();
-
   useEffect(() => {
-    const sequence = async () => {
-      // Плавное появление логотипа и текста
-      await controls.start({
-        opacity: 1,
-        scale: 1,
-        transition: { duration: 1.5 },
-      });
-      // Задержка перед исчезновением
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      // Плавное исчезновение логотипа и текста
-      await controls.start({
-        opacity: 0,
-        scale: 0,
-        transition: { duration: 1.5 },
-      });
-      // Вызов функции завершения анимации
+    // Таймер завершения анимации
+    const totalDuration = 4000; // Убедитесь, что это совпадает с длительностью вашей анимации
+    const timer = setTimeout(() => {
       onComplete();
-    };
-    sequence();
-  }, [controls, onComplete]);
+    }, totalDuration);
+
+    return () => clearTimeout(timer);
+  }, [onComplete]);
 
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
-      animate={controls}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0 }}
+      transition={{ duration: 1.5 }}
       className="flex flex-col items-center justify-center h-full relative"
     >
       <motion.img
-        src="/src/assets/logo.svg" // Убедитесь, что путь к логотипу правильный
+        src="/logo.svg" // Проверьте правильность пути к вашему логотипу
         alt="Logo"
         className="w-32 h-32 mb-4"
       />
-      <motion.h1
-        className="text-4xl font-bold text-black"
-      >
-        SOLARLINK
-      </motion.h1>
+      {/* Подключаем анимацию текста */}
+      <TextEffectWithExit />
     </motion.div>
   );
 };

@@ -53,13 +53,13 @@ const Home: React.FC = () => {
             className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
             onClick={() => setIsMenuOpen(false)}
           >
-            Personal Account
+            Account
           </Link>
         </div>
       )}
 
       {/* Main Content */}
-      <h1 className="text-3xl font-bold">Hello World</h1>
+      <h1 className="text-3xl font-bold">Connected🟢</h1>
     </div>
   )
 }
