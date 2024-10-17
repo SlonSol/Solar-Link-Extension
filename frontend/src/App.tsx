@@ -10,7 +10,7 @@ import IntroLogo from './components/IntroLogo'; // Импортируем нов
 
 const App: React.FC = () => {
   const [token, setToken] = useState<string | null>(null);
-  const [showIntro, setShowIntro] = useState<boolean>(true); // Показывать анимацию при первом запуске
+  const [showIntro, setShowIntro] = useState<boolean>(false); // Изначально скрыть анимацию
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');

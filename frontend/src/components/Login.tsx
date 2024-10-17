@@ -45,7 +45,7 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            className="p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200 animated-border"
+            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
           />
           <input
             type="password"
@@ -53,11 +53,11 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200 animated-border"
+            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
           />
           <button
             type="submit"
-            className="animated-button w-full"
+            className="w-full border-2 border-yellow-500 text-black bg-white hover:bg-yellow-50 p-3 rounded-lg transition-all duration-200 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
           >
             Login
           </button>

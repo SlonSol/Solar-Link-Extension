@@ -103,25 +103,25 @@ const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            className="p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200 animated-border"
+            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
           />
           <label className="mb-1 font-medium">Last Name:</label>
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            className="p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200 animated-border"
+            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
           />
           <label className="mb-1 font-medium">Biography:</label>
           <textarea
             value={bio}
             onChange={(e) => setBio(e.target.value)}
-            className="p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200 animated-border"
+            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
             rows={4}
           />
           <button
             onClick={handleUpdate}
-            className="animated-button w-full"
+            className="w-full border-2 border-yellow-500 text-black bg-white hover:bg-yellow-50 p-3 rounded-lg transition-all duration-200 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
           >
             Save
           </button>
@@ -132,7 +132,7 @@ const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
           </Link>
           <button
             onClick={handleLogout}
-            className="border-2 border-red-500 text-red-500 bg-white hover:bg-red-50 p-2 rounded-lg transition-all duration-200 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
+            className="text-red-500 hover:underline"
           >
             Logout
           </button>
