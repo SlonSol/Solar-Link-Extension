@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
 import Header from './Header'
+import { motion } from 'framer-motion';
+
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState('')
@@ -31,8 +33,14 @@ const Register: React.FC = () => {
       {/* Header */}
       <Header />
 
-      {/* Main Content */}
-      <div className="w-full flex flex-col items-center mt-8">
+      <motion.div
+      className="w-full flex flex-col items-center mt-8"
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 1 }}
+      >
+
         <h2 className="text-2xl font-semibold text-center mb-4">Register</h2>
         {message && <p className="mb-4 text-center text-green-500">{message}</p>}
         <form onSubmit={handleSubmit} className="flex flex-col w-full space-y-4">
@@ -75,7 +83,7 @@ const Register: React.FC = () => {
             </Link>
           </p>
         </div>
-      </div>
+        </motion.div>
     </div>
   )
 }

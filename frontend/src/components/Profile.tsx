@@ -1,32 +1,34 @@
 // src/components/Profile.tsx
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 interface ProfileProps {
-  token: string
-  handleLogout: () => void
+  token: string;
+  handleLogout: () => void;
 }
 
 interface UserProfile {
-  id: number
-  username: string
-  email: string
-  first_name: string
-  last_name: string
+  id: number;
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
   profile: {
-    bio: string
-  }
+    bio: string;
+  };
 }
 
 const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
-  const [profile, setProfile] = useState<UserProfile | null>(null)
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [bio, setBio] = useState('')
-  const [message, setMessage] = useState('')
-  const [error, setError] = useState<string | null>(null)
-  const navigate = useNavigate()
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [bio, setBio] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -35,20 +37,20 @@ const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        })
-        setProfile(response.data)
-        setFirstName(response.data.first_name)
-        setLastName(response.data.last_name)
-        setBio(response.data.profile.bio || '')
+        });
+        setProfile(response.data);
+        setFirstName(response.data.first_name);
+        setLastName(response.data.last_name);
+        setBio(response.data.profile.bio || '');
       } catch (error: any) {
-        console.error(error)
-        setError('Failed to load profile. Please log in again.')
-        handleLogout()
-        navigate('/login')
+        console.error(error);
+        setError('Failed to load profile. Please log in again.');
+        handleLogout();
+        navigate('/login');
       }
-    }
-    fetchProfile()
-  }, [token, handleLogout, navigate])
+    };
+    fetchProfile();
+  }, [token, handleLogout, navigate]);
 
   const handleUpdate = async () => {
     try {
@@ -66,18 +68,24 @@ const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
             Authorization: `Bearer ${token}`,
           },
         }
-      )
-      setProfile(response.data)
-      setMessage('Profile updated successfully.')
-      setError(null)
+      );
+      setProfile(response.data);
+      setMessage('Profile updated successfully.');
+      setError(null);
     } catch (error: any) {
-      setError(error.response?.data?.detail || 'Failed to update profile.')
+      setError(error.response?.data?.detail || 'Failed to update profile.');
     }
-  }
+  };
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center h-full">
+      <motion.div
+        className="flex flex-col items-center justify-center h-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <p className="mb-4 text-red-500">{error}</p>
         <button
           onClick={handleLogout}
@@ -85,14 +93,20 @@ const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
         >
           Logout
         </button>
-      </div>
-    )
+      </motion.div>
+    );
   }
 
-  if (!profile) return <div className="text-center">Loading...</div>
+  if (!profile) return <div className="text-center">Loading...</div>;
 
   return (
-    <div className="flex flex-col items-center justify-center h-full relative">
+    <motion.div
+      className="flex flex-col items-center justify-center h-full relative"
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 1 }}
+    >
       {/* Основной контент */}
       <div className="w-full flex flex-col items-center">
         <h2 className="text-2xl font-semibold text-center mb-4">Personal Account</h2>
@@ -120,6 +134,7 @@ const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
             rows={4}
           />
           <button
+            type="button"
             onClick={handleUpdate}
             className="w-full border-2 border-yellow-500 text-black bg-white hover:bg-yellow-50 p-3 rounded-lg transition-all duration-200 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
           >
@@ -138,8 +153,8 @@ const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
           </button>
         </div>
       </div>
-    </div>
-  )
-}
+    </motion.div>
+  );
+};
 
-export default Profile
+export default Profile;

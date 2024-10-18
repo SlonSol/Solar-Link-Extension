@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
 import Header from './Header'
+import { motion } from 'framer-motion';
 
 interface LoginProps {
   setToken: (token: string) => void
@@ -23,7 +24,7 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
       })
       setToken(response.data.access)
       localStorage.setItem('token', response.data.access)
-      navigate('/profile')
+      navigate('/')
     } catch (error: any) {
       setMessage(error.response?.data?.detail || 'Authentication failed.')
     }
@@ -34,8 +35,15 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
       {/* Header */}
       <Header />
 
+      <motion.div
+      className="w-full flex flex-col items-center mt-8"
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 1 }}
+      >
       {/* Main Content */}
-      <div className="w-full flex flex-col items-center mt-8">
+      {/* <div className=""> */}
         <h2 className="text-2xl font-semibold text-center mb-4">Login</h2>
         {message && <p className="mb-4 text-center text-red-500">{message}</p>}
         <form onSubmit={handleSubmit} className="flex flex-col w-full space-y-4">
@@ -77,7 +85,8 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
             </Link>
           </p>
         </div>
-      </div>
+      {/* </div> */}
+      </motion.div>
     </div>
   )
 }
