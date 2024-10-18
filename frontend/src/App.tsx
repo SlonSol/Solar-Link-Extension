@@ -9,7 +9,6 @@ import HomePage from './components/Home';
 import Settings from './components/Settings';
 import IntroLogo from './components/IntroLogo';
 import AnimatedTabs from './components/AnimatedTabs'; // Исправленный импорт
-// import { AnimatePresence } from 'framer-motion';
 
 const App: React.FC = () => {
   return (
@@ -54,6 +53,7 @@ const AppContent: React.FC = () => {
   };
 
   return (
+    
     <div className="relative min-h-screen bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
       <div className="flex items-center justify-center min-h-screen">
         <div className="w-[364px] h-[600px] px-[20px] py-[16px] bg-white rounded-lg shadow-lg overflow-y-auto transform bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,245,238,.5)_100%)] relative">
@@ -61,7 +61,6 @@ const AppContent: React.FC = () => {
           {showIntro ? (
             <IntroLogo onComplete={handleIntroComplete} />
           ) : (
-            // <AnimatePresence exitBeforeEnter>
               <Routes location={location} key={location.pathname}>
                 <Route path="/" element={token ? <HomePage /> : <Navigate to="/login" />} />
                 <Route path="/login" element={!token ? <Login setToken={setToken} /> : <Navigate to="/" />} />
@@ -70,9 +69,10 @@ const AppContent: React.FC = () => {
                 <Route path="/settings" element={token ? <Settings /> : <Navigate to="/login" />} />
                 <Route path="*" element={<Navigate to={token ? "/" : "/login"} />} />
               </Routes>
-            // </AnimatePresence>
           )}
+          <div className="flex items-center justify-center">
           {!showIntro && token && <AnimatedTabs />}
+        </div>
         </div>
       </div>
     </div>

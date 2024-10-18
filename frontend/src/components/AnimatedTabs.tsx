@@ -25,8 +25,8 @@ const AnimatedTabs: React.FC = () => {
     ];
 
     return (
-        <div className='absolute bottom-4 w-full flex justify-center items-center'>
-            <div className='flex space-x-4 rounded-xl border border-zinc-950/10 bg-white p-2 max-w-full overflow-hidden'>
+        <div className='absolute bottom-6 items-center justify-center'>
+      <div className='flex w-full space-x-2 rounded-xl border border-zinc-950/10 bg-white p-2'>
                 <AnimatedBackground
                     defaultValue={TABS[0].label}
                     className='rounded-lg bg-zinc-100'

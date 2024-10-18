@@ -14,18 +14,11 @@ interface UserProfile {
   id: number;
   username: string;
   email: string;
-  first_name: string;
-  last_name: string;
-  profile: {
-    bio: string;
-  };
 }
 
 const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
   const [profile, setProfile] = useState<UserProfile | null>(null);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [bio, setBio] = useState('');
+  const [username, setUsername] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -39,9 +32,7 @@ const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
           },
         });
         setProfile(response.data);
-        setFirstName(response.data.first_name);
-        setLastName(response.data.last_name);
-        setBio(response.data.profile.bio || '');
+        setUsername(response.data.username);
       } catch (error: any) {
         console.error(error);
         setError('Failed to load profile. Please log in again.');
@@ -57,11 +48,7 @@ const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
       const response = await axios.put(
         'http://localhost:8000/api/users/profile/',
         {
-          first_name: firstName,
-          last_name: lastName,
-          profile: {
-            bio: bio,
-          },
+          username: username,
         },
         {
           headers: {
@@ -101,38 +88,40 @@ const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center h-full relative"
+      className="flex flex-col items-center justify-center h-full relative p-4"
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
       transition={{ duration: 1 }}
     >
       {/* Основной контент */}
-      <div className="w-full flex flex-col items-center">
-        <h2 className="text-2xl font-semibold text-center mb-4">Personal Account</h2>
+      <div className="w-full max-w-md">
+        <h2 className="text-2xl font-semibold text-center mb-6">Account</h2>
         {message && <p className="mb-4 text-center text-green-500">{message}</p>}
-        <form className="flex flex-col w-full space-y-4">
-          <label className="mb-1 font-medium">First Name:</label>
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
-          />
-          <label className="mb-1 font-medium">Last Name:</label>
-          <input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
-          />
-          <label className="mb-1 font-medium">Biography:</label>
-          <textarea
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
-            rows={4}
-          />
+        <form className="flex flex-col space-y-4">
+          {/* Username */}
+          <div className="flex flex-col">
+            <label className="mb-1 font-medium">Username:</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
+            />
+          </div>
+
+          {/* Email */}
+          <div className="flex flex-col">
+            <label className="mb-1 font-medium">Email:</label>
+            <input
+              type="email"
+              value={profile.email}
+              disabled
+              className="p-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-500 shadow-sm focus:outline-none cursor-not-allowed"
+            />
+          </div>
+
+          {/* Save Button */}
           <button
             type="button"
             onClick={handleUpdate}
@@ -141,9 +130,9 @@ const Profile: React.FC<ProfileProps> = ({ token, handleLogout }) => {
             Save
           </button>
         </form>
-        <div className="flex justify-between w-full mt-4">
-          <Link to="/" className="text-yellow-500 hover:underline">
-            Home
+        <div className="flex justify-between w-full mt-6">
+          <Link to="/profile" className="text-yellow-500 hover:underline">
+            My Nodes
           </Link>
           <button
             onClick={handleLogout}

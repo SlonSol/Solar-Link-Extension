@@ -63,15 +63,9 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
             required
             className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200"
           />
-          {/* <button
-            type="submit"
-            className="w-full border-2 border-yellow-500 text-black bg-white hover:bg-yellow-50 p-3 rounded-lg transition-all duration-200 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
-          >
-            Login
-          </button> */}
           <button type="submit" 
           className='relative border border-gray-100  inline-flex h-12 overflow-hidden p-[3px] rounded-lg'>
-            <span className='absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#FFD15D_50%,#FFFFFF_100%)]' />
+            <span className='absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#FFD15D_50%,#FFFFFF_100%)]' />
             <span className='inline-flex border border-gray-100  h-full w-full cursor-pointer items-center p-3 rounded-lg justify-center bg-white text-black backdrop-blur-3xl'>
             Login
             </span>

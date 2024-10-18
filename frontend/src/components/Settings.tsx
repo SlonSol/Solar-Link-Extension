@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Header from './Header';
 
 const Settings: React.FC = () => {
   return (
@@ -12,8 +13,10 @@ const Settings: React.FC = () => {
       exit={{ opacity: 0, y: -50 }}
       transition={{ duration: 1 }}
     >
+      <Header />
       {/* Основной контент страницы Home */}
       <h1 className="text-3xl font-bold">Settings</h1>
+      <h1 className="p-3 text font-bold">Comming soon...</h1>
     </motion.div>
   );
 }
