@@ -23,22 +23,20 @@ const Home: React.FC = () => {
     >
       <Header />
       {/* Основной контент страницы Home */}
-      <h1 className="text-3xl font-bold mb-8">Connected🟢</h1>
+      <h1 className="text-3xl font-bold mb-8 inline-flex animate-text-gradient bg-gradient-to-r from-[#fd4faa] via-[#fef3a9] to-[#fdef4a] bg-[200%_auto] bg-clip-text text-2xl text-transparent">Connected</h1>
+      <h1 className="text-3xl font-bold mb-8 inline-flex animate-text-gradient bg-gradient-to-r from-[#fdefaa] via-[#fef3a9] to-[#fdef4a] bg-[200%_auto] bg-clip-text text-8xl text-transparent">🟢</h1>
       
       <div className="flex flex-col items-start space-y-4">
-        {/* Points */}
         <div>
           <span className="text-lg font-medium">Points:</span>
           <span className="ml-2 text-lg">0 Points</span>
         </div>
         
-        {/* Referrals */}
         <div>
           <span className="text-lg font-medium">Referrals:</span>
           <span className="ml-2 text-lg">0</span>
         </div>
         
-        {/* Ping */}
         <div>
           <span className="text-lg font-medium">Ping:</span>
           <span className="ml-2 text-lg text-green-500">{ping} ms</span>

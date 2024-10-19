@@ -63,17 +63,17 @@ const InputSpotlightBorder: React.FC<InputSpotlightBorderProps> = ({
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         autoComplete="off"
-        className="h-12 w-full cursor-default rounded-md border border-gray-100 bg-yellow-150 p-3.5 text-gray-100 transition-colors duration-500 placeholder:select-none placeholder:text-gray-100 focus:border-[#FFD15D] focus:outline-none"
+        className="h-12 w-full cursor-default rounded-md border border-gray-200 bg-yellow-650 p-3.5 text-gray-800 transition-colors duration-200 placeholder:select-none focus:border-[#FFD15D] focus:border-2 focus:outline-none"
       />
       <div
         ref={divRef}
         style={{
           border: '3px solid #FFD15D',
           opacity,
-          WebkitMaskImage: `radial-gradient(30% 30px at ${position.x}px ${position.y}px, yellow 45%, transparent)`,
+          WebkitMaskImage: `radial-gradient(30% 50px at ${position.x}px ${position.y}px, yellow 45%, transparent)`,
         }}
         aria-hidden="true"
-        className="pointer-events-none absolute left-0 top-0 z-10 h-12 w-full cursor-default rounded-md border border-[#FFD15D] bg-transparent p-3.5 transition-opacity duration-500"
+        className="pointer-events-none absolute left-0 top-0 z-10 h-12 w-full cursor-default rounded-md border border-[#FFD15D] bg-transparent p-3.5 transition-opacity duration-100"
       />
     </div>
   );
